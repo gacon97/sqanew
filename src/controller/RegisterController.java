@@ -24,8 +24,8 @@ public class RegisterController {
         String dbUrl = "jdbc:mysql://localhost:3306/sqa";
         String dbClass = "com.mysql.jdbc.Driver";
         try {
-            Class.forName(dbClass);
-            conn = DriverManager.getConnection(dbUrl, "root", "");
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(dbUrl, "root", "root");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -83,7 +83,6 @@ public class RegisterController {
                 st.setString(8, user.getPassword());
             } else {
                 st.setString(8, password);
-
             }
             st.setString(9, user.getType());
 

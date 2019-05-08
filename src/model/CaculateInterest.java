@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class CaculateInterest {
     private int thang;
-    private ArrayList<Double> tienGocConLai;
-    private ArrayList<Double> tienLaiTraHangThang;
-    private Double gocTraHangThang;
-    private ArrayList<Double> tongTienTraHangThang;
+    private ArrayList<Long> tienGocConLai;
+    private ArrayList<Long> tienLaiTraHangThang;
+    private Long gocTraHangThang;
+    private ArrayList<Long> tongTienTraHangThang;
 
     public int getThang() {
         return thang;
@@ -26,38 +26,37 @@ public class CaculateInterest {
         this.thang = thang;
     }
 
-    public ArrayList<Double> getTienGocConLai() {
+    public ArrayList<Long> getTienGocConLai() {
         return tienGocConLai;
     }
 
-    public void setTienGocConLai(ArrayList<Double> tienGocConLai) {
+    public void setTienGocConLai(ArrayList<Long> tienGocConLai) {
         this.tienGocConLai = tienGocConLai;
     }
 
-    public ArrayList<Double> getTienLaiTraHangThang() {
+    public ArrayList<Long> getTienLaiTraHangThang() {
         return tienLaiTraHangThang;
     }
 
-    public void setTienLaiTraHangThang(ArrayList<Double> tienLaiTraHangThang) {
+    public void setTienLaiTraHangThang(ArrayList<Long> tienLaiTraHangThang) {
         this.tienLaiTraHangThang = tienLaiTraHangThang;
     }
 
-    public Double getGocTraHangThang() {
+    public Long getGocTraHangThang() {
         return gocTraHangThang;
     }
 
-    public void setGocTraHangThang(Double gocTraHangThang) {
+    public void setGocTraHangThang(Long gocTraHangThang) {
         this.gocTraHangThang = gocTraHangThang;
     }
 
-    public ArrayList<Double> getTongTienTraHangThang() {
+    public ArrayList<Long> getTongTienTraHangThang() {
         return tongTienTraHangThang;
     }
 
-    public void setTongTienTraHangThang(ArrayList<Double> tongTienTraHangThang) {
+    public void setTongTienTraHangThang(ArrayList<Long> tongTienTraHangThang) {
         this.tongTienTraHangThang = tongTienTraHangThang;
     }
 
-   
     
 }

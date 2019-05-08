@@ -211,7 +211,6 @@ public class RegistryLoanview extends javax.swing.JFrame {
         chua_day_du = new javax.swing.JRadioButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
-        exprity = new com.toedter.calendar.JDateChooser();
         tieu_dung = new javax.swing.JRadioButton();
         vay_ngay = new javax.swing.JRadioButton();
         ban_dau = new javax.swing.JRadioButton();
@@ -378,7 +377,6 @@ public class RegistryLoanview extends javax.swing.JFrame {
                                 .addComponent(day_du)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(chua_day_du))
-                            .addComponent(exprity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField2))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -447,10 +445,8 @@ public class RegistryLoanview extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(exprity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(day_du)
@@ -669,7 +665,6 @@ public class RegistryLoanview extends javax.swing.JFrame {
     private javax.swing.JRadioButton chua_day_du;
     private javax.swing.JRadioButton dai_han;
     private javax.swing.JRadioButton day_du;
-    private com.toedter.calendar.JDateChooser exprity;
     private javax.swing.JRadioButton giam_dan;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

@@ -5,6 +5,7 @@
  */
 package modelTest;
 
+import java.util.Date;
 import model.Loan_asset;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,6 +19,8 @@ import static org.junit.Assert.*;
  * @author phamt
  */
 public class Loan_assetTest {
+    
+    Date date = new Date(System.currentTimeMillis());
     
     public Loan_assetTest() {
     }
@@ -41,7 +44,7 @@ public class Loan_assetTest {
     @Test
     public void testGetId() {
         System.out.println("Get Id");
-        Loan_asset instance = new Loan_asset(1, 1, 1, 12, 1000, "2 năm", "long term", "continue", "2009-08-24 13:19:24", "2009-08-24 13:19:24");
+        Loan_asset instance = new Loan_asset(4, 5, 17, 200000000, "1","done", 'Sat May 04 11:51:33 ICT 2019', date);
         int expResult = 1;
         int result = instance.getId();
         assertEquals(expResult, result);
@@ -50,7 +53,7 @@ public class Loan_assetTest {
     @Test
     public void testGetCustomer_id() {
         System.out.println("Get Customer_id");
-        Loan_asset instance = new Loan_asset(1, 1, 1, 12, 1000, "2 năm", "long term", "continue", "2009-08-24 13:19:24", "2009-08-24 13:19:24");
+        Loan_asset instance = new Loan_asset(1, 1, 12, 1000.0, "2 năm", "long term", "continue", "2009-08-24 13:19:24", "2009-08-24 13:19:24");
         int expResult = 1;
         int result = instance.getCustomer_id();
         assertEquals(expResult, result);
