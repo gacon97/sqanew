@@ -32,7 +32,7 @@ public class CaculateEmployeeController {
             // dang ki driver
             Class.forName(dbClass);
             // tao 1 ket noi
-            conn = DriverManager.getConnection(dbUrl, "root", "root");
+            conn = DriverManager.getConnection(dbUrl, "root", "");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CaculateEmployeeController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

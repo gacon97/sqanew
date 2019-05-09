@@ -31,7 +31,7 @@ public class CustomerController {
         String dbClass = "com.mysql.jdbc.Driver";
         try {
             Class.forName(dbClass);
-            conn = DriverManager.getConnection(dbUrl, "root", "root");
+            conn = DriverManager.getConnection(dbUrl, "root", "");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

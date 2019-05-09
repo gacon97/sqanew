@@ -49,35 +49,36 @@ public class Register extends javax.swing.JFrame {
         txtPlaceCard = new javax.swing.JTextField();
         jboxSex = new javax.swing.JComboBox<>();
         btnRegister = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Register");
+        jLabel1.setText("Ngân hàng ACB");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Name");
+        jLabel2.setText("Tên");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Password");
+        jLabel3.setText("Mật khẩu");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Email");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Gender");
+        jLabel5.setText("Giới tính");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Phone number");
+        jLabel6.setText("Số điện thoại");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Card Id");
+        jLabel7.setText("Số thẻ");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Date of birth");
+        jLabel8.setText("Ngày sinh");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Place Card");
+        jLabel9.setText("Nơi cấp");
 
         jboxSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", " " }));
         jboxSex.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +123,8 @@ public class Register extends javax.swing.JFrame {
                             .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtCardId, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtPlaceCard, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(jboxSex, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jboxSex, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,8 +166,10 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(txtPlaceCard, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(26, 26, 26)
-                .addComponent(jLabel8)
-                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addComponent(btnRegister)
                 .addGap(43, 43, 43))
         );
@@ -183,7 +187,7 @@ public class Register extends javax.swing.JFrame {
         
         Date date_cmnd = date;
 //        Date date_cmnd  = (Date) date.getDate();
-        User user = new User(txtName.getText(), txtEmail.getText(), jboxSex.getSelectedItem().toString(), txtPhone.getText(), txtCardId.getText(), txtPlaceCard.getText(), date_cmnd,txtPassword.getText());
+        User user = new User(txtName.getText(), txtEmail.getText(), jboxSex.getSelectedItem().toString(), txtPhone.getText(), txtCardId.getText(), txtPlaceCard.getText(), date_cmnd,txtPassword.getText(), "customer");
         RegisterController register = new RegisterController();
 
         boolean check = register.save(user, true);
@@ -236,6 +240,7 @@ public class Register extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

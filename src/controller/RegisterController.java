@@ -25,7 +25,7 @@ public class RegisterController {
         String dbClass = "com.mysql.jdbc.Driver";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(dbUrl, "root", "root");
+            conn = DriverManager.getConnection(dbUrl, "root", "");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

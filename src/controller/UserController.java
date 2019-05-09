@@ -5,7 +5,7 @@
  */
 package controller;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,7 +33,7 @@ public class UserController {
         String dbClass = "com.mysql.jdbc.Driver";
         try {
             Class.forName(dbClass);
-            conn = DriverManager.getConnection(dbUrl, "root", "root");
+            conn = DriverManager.getConnection(dbUrl, "root", "");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
