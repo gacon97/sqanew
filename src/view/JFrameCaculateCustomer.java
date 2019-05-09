@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.CaculateInterest;
@@ -13,19 +15,28 @@ import model.CaculateInterest;
  *
  * @author nam
  */
-public class JFrameCaculateRegister extends javax.swing.JFrame {
+public class JFrameCaculateCustomer extends javax.swing.JFrame {
 
     private ArrayList<CaculateInterest> list;
     DefaultTableModel model;
     private int size = 0;
+    private ArrayList<Long> MangTienGocConLai;
+    private ArrayList<Long> MangTienLai;
+    private ArrayList<Long> MangTong;
+
     /**
      * Creates new form JFrameCaculateRegister
      */
-    public JFrameCaculateRegister() {
+    public JFrameCaculateCustomer() {
         initComponents();
         this.setLocationRelativeTo(null);
         list = new ArrayList();
-        
+        // Mảng tiền gốc còn lại sau khi đã trừ tiền trả từng tháng một 
+        MangTienGocConLai = new ArrayList<>();
+        // Mảng tiền lãi hàng tháng 
+        MangTienLai = new ArrayList<>();
+        // Mảng tổng tiền phải trả hàng tháng 
+        MangTong = new ArrayList<>();
         model = (DefaultTableModel) jTable1.getModel();
     }
 
@@ -129,7 +140,7 @@ public class JFrameCaculateRegister extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -284,6 +295,13 @@ public class JFrameCaculateRegister extends javax.swing.JFrame {
         txtSoTienVay.setText("");
         txtThoiGianVay.setText("");
         txtLaiXuat.setText("");
+        lbTienGocTraHangThang.setText("");
+        lbTienLaiTraThangDauTien.setText("");
+        lbTongSoTienTraThangDauTien.setText("");
+        model.setRowCount(0);
+        MangTienGocConLai.clear();
+        MangTienLai.clear();
+        MangTong.clear();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSoTienVayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoTienVayActionPerformed
@@ -292,41 +310,45 @@ public class JFrameCaculateRegister extends javax.swing.JFrame {
 
     private void btnKetQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetQuaActionPerformed
         // TODO add your handling code here:
-        Double soTienVay = Double.parseDouble(txtSoTienVay.getText());
+//        System.out.println(txtSoTienVay.getText());
+        long soTienVay = Long.parseLong(txtSoTienVay.getText());
         int thoiGianVay = Integer.parseInt(txtThoiGianVay.getText());
-        Double laiXuat = Double.parseDouble(txtLaiXuat.getText());
+        long laiXuat = Long.parseLong(txtLaiXuat.getText());
 
         size = thoiGianVay;
-        
+
         // Số tiền gốc phải trả hàng tháng
-        Double soTienGocTraHangThang = (Double) soTienVay / thoiGianVay;
+        long soTienGocTraHangThang = (long) soTienVay / thoiGianVay;
         // lãi xuất tính trên tháng 
-        Double laiXuatTrenThang = (Double) laiXuat / 12 / 100;
+        float laiXuatTrenThang = (float) laiXuat / 12 / 100;
         // Số tiền lãi phải trả tháng đầu tiên 
-        Double tienLaiTraThangDauTien = (Double) soTienVay * laiXuatTrenThang;
-        
-        // Mảng tiền gốc còn lại sau khi đã trừ tiền trả từng tháng một 
-        ArrayList<Double> MangTienGocConLai = new ArrayList<>();
-        // Mảng tiền lãi hàng tháng 
-        ArrayList<Double> MangTienLai = new ArrayList<>();
-        // Mảng tổng tiền phải trả hàng tháng 
-        ArrayList<Double> MangTong = new ArrayList<>();
+        int tienLaiTraThangDauTien =(int) ((float)soTienVay * laiXuatTrenThang);
+
+        long du = 0;
         for (int i = 1; i <= thoiGianVay; i++) {
             // Số tiền lãi phải trả tháng i 
-            Double soTienLaiHangThang = (Double) soTienVay*laiXuatTrenThang;
+            long soTienLaiHangThang = (long) ((float)soTienVay * laiXuatTrenThang);
             MangTienLai.add(soTienLaiHangThang);
-            // Tổng số tiền phải trả tháng i 
-            Double tong = (Double) soTienLaiHangThang + soTienGocTraHangThang;
-            MangTong.add(tong);
-            // Tổng số tiền gôc còn lại sau khi trừ số tiền gốc phải trả hàng tháng 
-            soTienVay = (Double) (soTienVay - soTienGocTraHangThang);
-            MangTienGocConLai.add(soTienVay);    
+
+            // Tổng số tiền gôc còn lại sau khi trừ số tiền gốc phải trả hàng tháng
+            if(i != thoiGianVay) {
+                soTienVay = (long) (soTienVay - soTienGocTraHangThang);
+                // Tổng số tiền phải trả tháng i 
+                long tong = (long) soTienLaiHangThang + soTienGocTraHangThang;
+                MangTong.add(tong);
+            } else {
+                du = (long) (soTienVay - soTienGocTraHangThang);
+                long tong = (long) soTienLaiHangThang + soTienGocTraHangThang + du;
+                MangTong.add(tong);
+                soTienVay = 0;
+            }
+            MangTienGocConLai.add(soTienVay);
         }
 
-        Double tong = soTienGocTraHangThang + tienLaiTraThangDauTien;
-        lbTienGocTraHangThang.setText(soTienGocTraHangThang + "");
-        lbTienLaiTraThangDauTien.setText(tienLaiTraThangDauTien + "");
-        lbTongSoTienTraThangDauTien.setText(tong + "");
+        long tong = soTienGocTraHangThang + tienLaiTraThangDauTien;
+        lbTienGocTraHangThang.setText(Math.round(soTienGocTraHangThang*1000)/1000 + "");
+        lbTienLaiTraThangDauTien.setText(Math.round(tienLaiTraThangDauTien*1000)/1000 + "");
+        lbTongSoTienTraThangDauTien.setText(Math.round(tong*1000)/1000 + "");
 
         CaculateInterest caculate = new CaculateInterest();
         caculate.setTienGocConLai(MangTienGocConLai);
@@ -338,12 +360,13 @@ public class JFrameCaculateRegister extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKetQuaActionPerformed
 
     int j = 1;
+
     public void showResult() {
         CaculateInterest c = list.get(0);
-        for(int i = 0; i < size; i++) {
-            model.addRow(new Object[] {
-                i+1, c.getTienGocConLai().get(i), c.getGocTraHangThang(), c.getTienLaiTraHangThang().get(i), c.getTongTienTraHangThang().get(i)
-            });     
+        for (int i = 0; i < size; i++) {
+            model.addRow(new Object[]{
+                i + 1, c.getTienGocConLai().get(i), c.getGocTraHangThang(), c.getTienLaiTraHangThang().get(i), c.getTongTienTraHangThang().get(i)
+            });
         }
     }
     
@@ -364,21 +387,23 @@ public class JFrameCaculateRegister extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameCaculateRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCaculateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameCaculateRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCaculateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameCaculateRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCaculateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameCaculateRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCaculateCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameCaculateRegister().setVisible(true);
+                new JFrameCaculateCustomer().setVisible(true);
             }
         });
     }

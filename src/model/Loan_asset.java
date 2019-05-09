@@ -15,7 +15,7 @@ public class Loan_asset {
     private int id, customer_id, asset_id;
     private float amount;
     private String term, status;
-    private Date start_date;
+    private Date start_date, end_date;
 
     public Loan_asset(int id, int customer_id, int asset_id, float amount, String term, String status, Date start_date, Date end_date) {
         this.id = id;
@@ -25,6 +25,17 @@ public class Loan_asset {
         this.term = term;
         this.status = status;
         this.start_date = start_date;
+        this.end_date = end_date;
+    }
+    
+    public Loan_asset(int id, int customer_id, float amount, String term, String status, Date start_date) {
+        this.id = id;
+        this.customer_id = customer_id;
+        this.amount = amount;
+        this.term = term;
+        this.status = status;
+        this.start_date = start_date;
+        this.end_date = end_date;
     }
     
     public Loan_asset()

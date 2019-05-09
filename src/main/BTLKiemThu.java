@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.util.Date;
 import view.*;
 /**
  *
@@ -16,8 +17,11 @@ public class BTLKiemThu {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(date);
         Login login = new Login();
         login.setVisible(true);
+        
     }
     
 }

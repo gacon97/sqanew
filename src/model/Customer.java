@@ -14,6 +14,10 @@ public class Customer {
     private float salary;
     private String address, object, job, company, position;
 
+    public Customer() {
+        
+    }
+    
     public Customer(int id, int branch_id, int user_id, String object,  String address,  String job, String company, String position, float salary) {
         this.id = id;
         this.branch_id = branch_id;
@@ -24,6 +28,11 @@ public class Customer {
         this.job = job;
         this.company = company;
         this.position = position;
+    }
+    
+    public Customer(int id, int user_id) {
+        this.id = id;
+        this.user_id = user_id;
     }
 
     public Customer(int branch_id, int user_id, String address, String object, String job, String company, String position, float salary) {

@@ -33,7 +33,7 @@ public class UserController {
         String dbClass = "com.mysql.jdbc.Driver";
         try {
             Class.forName(dbClass);
-            conn = DriverManager.getConnection(dbUrl, "root", "");
+            conn = DriverManager.getConnection(dbUrl, "root", "root");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -70,7 +70,6 @@ public class UserController {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
         return usersList;
     }
 

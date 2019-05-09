@@ -28,7 +28,7 @@ public class LoanController {
         String dbClass = "com.mysql.jdbc.Driver";
         try {
             Class.forName(dbClass);
-            conn = DriverManager.getConnection(dbUrl, "root", "");
+            conn = DriverManager.getConnection(dbUrl, "root", "root");
         } catch (ClassNotFoundException e) {
             System.out.println("Class was not found.");
         }

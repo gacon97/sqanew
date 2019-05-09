@@ -171,7 +171,7 @@ public class InformationLoan extends javax.swing.JFrame {
 
     private void btnCalculatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculatorActionPerformed
         // TODO add your handling code here:
-        JFrameCaculateRegister jFrameCaculateRegister = new JFrameCaculateRegister();
+        JFrameCaculateCustomer jFrameCaculateRegister = new JFrameCaculateCustomer();
         jFrameCaculateRegister.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCalculatorActionPerformed

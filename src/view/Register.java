@@ -49,7 +49,6 @@ public class Register extends javax.swing.JFrame {
         txtPlaceCard = new javax.swing.JTextField();
         jboxSex = new javax.swing.JComboBox<>();
         btnRegister = new javax.swing.JButton();
-        date = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,7 +117,6 @@ public class Register extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
@@ -166,10 +164,8 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(txtPlaceCard, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addComponent(jLabel8)
+                .addGap(44, 44, 44)
                 .addComponent(btnRegister)
                 .addGap(43, 43, 43))
         );
@@ -183,9 +179,11 @@ public class Register extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
 
-        Date date_cmnd = (Date) date.getDate();
+        Date date =  new Date(System.currentTimeMillis());
+        
+        Date date_cmnd = date;
 //        Date date_cmnd  = (Date) date.getDate();
-        User user = new User(txtName.getText(), txtEmail.getText(), jboxSex.getSelectedItem().toString(), txtPhone.getText(), txtCardId.getText(), txtPlaceCard.getText(), date_cmnd,txtPassword.getText(), "customer");
+        User user = new User(txtName.getText(), txtEmail.getText(), jboxSex.getSelectedItem().toString(), txtPhone.getText(), txtCardId.getText(), txtPlaceCard.getText(), date_cmnd,txtPassword.getText());
         RegisterController register = new RegisterController();
 
         boolean check = register.save(user, true);
@@ -238,7 +236,6 @@ public class Register extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
-    private com.toedter.calendar.JDateChooser date;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
