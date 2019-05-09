@@ -417,9 +417,16 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
         long tienLaiTraThangDauTien =(long) ((float)soTienVay * laiXuatTrenThang);
 
         long du = 0;
+        long soTienLaiHangThang = tienLaiTraThangDauTien;
         for (int i = 1; i <= thoiGianVay; i++) {
-            // Số tiền lãi phải trả tháng i 
-            long soTienLaiHangThang = (long) ((float)soTienVay * laiXuatTrenThang);
+            // Số tiền lãi phải trả tháng i
+            if(cbHinhThucVay.getSelectedItem() == "Không có tài sản đảm bảo" && 
+                cbCachThuc.getSelectedItem() == "Tính theo dư nợ ban đầu") {
+                soTienLaiHangThang = tienLaiTraThangDauTien;
+            } else {
+                soTienLaiHangThang = (long) ((float)soTienVay * laiXuatTrenThang);
+            }
+ 
             MangTienLai.add(soTienLaiHangThang);
 
             // Tổng số tiền gôc còn lại sau khi trừ số tiền gốc phải trả hàng tháng
