@@ -76,13 +76,13 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        lbThoiGianVay = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         lbTrangThai = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         lbNgayBatDauVay = new javax.swing.JLabel();
+        lbThoiGianVay = new javax.swing.JTextField();
+        btnQuayLai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,7 +104,7 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
 
         jLabel7.setText("Số Tiền Vay");
 
-        lbSoTienVay.setText("Số Tiền Vay");
+        lbSoTienVay.setText("0");
 
         jLabel9.setText("Hình Thức Vay");
 
@@ -120,11 +120,11 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tháng", "Tiền vay còn lại", "Tiền vay trả hàng tháng", "Tiền lãi trả hàng tháng", "Tổng tiền trả hàng tháng", "Trạng thái", "Ngày thanh toán"
+                "Tháng", "Tiền vay còn lại", "Tiền vay trả hàng tháng", "Tiền lãi trả hàng tháng", "Tổng tiền trả hàng tháng"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -164,10 +164,6 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
 
         jLabel10.setText("Thời gian vay");
 
-        lbThoiGianVay.setText("24");
-
-        jButton2.setText("Lưu");
-
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -197,6 +193,13 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
 
         lbNgayBatDauVay.setText("Ngày bắt đầu vay");
 
+        btnQuayLai.setText("Quay Lại");
+        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuayLaiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -225,9 +228,6 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
                                     .addComponent(lbHoTen)
                                     .addComponent(lbSoCMTND)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(61, 61, 61)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtLaiXuatKiDauTien, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel2))
@@ -237,13 +237,14 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
                                         .addComponent(jLabel8))
                                     .addComponent(cbHinhThucVay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbCachThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbThoiGianVay)
                                     .addComponent(lbSoTienVay)
-                                    .addComponent(lbNgayBatDauVay))
+                                    .addComponent(lbNgayBatDauVay)
+                                    .addComponent(lbThoiGianVay, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnQuayLai))
                                 .addGap(95, 95, 95)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(btnTimKiem)
@@ -251,7 +252,7 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
                         .addComponent(lbTrangThai)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,12 +290,12 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(lbThoiGianVay))
-                        .addGap(18, 18, 18)
+                            .addComponent(lbThoiGianVay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(lbNgayBatDauVay))
-                        .addGap(58, 58, 58)
+                        .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbCachThuc)
                             .addComponent(cbCachThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -309,9 +310,9 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
                             .addComponent(txtLaiXuatChoVayNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addGap(27, 27, 27)
-                        .addComponent(jButton2))
+                        .addComponent(btnQuayLai))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -396,7 +397,14 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
         MangTienGocConLai.clear();
         MangTienLai.clear();
         MangTong.clear();
-        long soTienVay = Long.parseLong(lbSoTienVay.getText());
+        long soTienVay = 0;
+        if(lbSoTienVay.getText() == "") {
+            lbTrangThai.setText("Chua co thong tin vay");
+            soTienVay = 0;
+        } else {
+            soTienVay = Long.parseLong(lbSoTienVay.getText());
+        }
+        
         int thoiGianVay = Integer.parseInt(lbThoiGianVay.getText());
         float laiXuat = Float.parseFloat(txtLaiXuatKiDauTien.getText());
 
@@ -410,9 +418,16 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
         long tienLaiTraThangDauTien =(long) ((float)soTienVay * laiXuatTrenThang);
 
         long du = 0;
+        long soTienLaiHangThang = tienLaiTraThangDauTien;
         for (int i = 1; i <= thoiGianVay; i++) {
-            // Số tiền lãi phải trả tháng i 
-            long soTienLaiHangThang = (long) ((float)soTienVay * laiXuatTrenThang);
+            // Số tiền lãi phải trả tháng i
+            if(cbHinhThucVay.getSelectedItem() == "Không có tài sản đảm bảo" && 
+                cbCachThuc.getSelectedItem() == "Tính theo dư nợ ban đầu") {
+                soTienLaiHangThang = tienLaiTraThangDauTien;
+            } else {
+                soTienLaiHangThang = (long) ((float)soTienVay * laiXuatTrenThang);
+            }
+ 
             MangTienLai.add(soTienLaiHangThang);
 
             // Tổng số tiền gôc còn lại sau khi trừ số tiền gốc phải trả hàng tháng
@@ -487,6 +502,13 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
     tinhLai();
 
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
+        // TODO add your handling code here:
+        InformationLoan informationLoan = new InformationLoan();
+        informationLoan.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQuayLaiActionPerformed
     int j = 1;
 
     public void showResult() {
@@ -552,10 +574,10 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JComboBox<String> cbCachThuc;
     private javax.swing.JComboBox<String> cbHinhThucVay;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -577,7 +599,7 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel lbNgayBatDauVay;
     private javax.swing.JLabel lbSoCMTND;
     private javax.swing.JLabel lbSoTienVay;
-    private javax.swing.JLabel lbThoiGianVay;
+    private javax.swing.JTextField lbThoiGianVay;
     private javax.swing.JLabel lbTrangThai;
     private javax.swing.JTextField txtLaiXuatChoVayNgay;
     private javax.swing.JTextField txtLaiXuatKiDauTien;
