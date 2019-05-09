@@ -104,7 +104,7 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
 
         jLabel7.setText("Số Tiền Vay");
 
-        lbSoTienVay.setText("Số Tiền Vay");
+        lbSoTienVay.setText("0");
 
         jLabel9.setText("Hình Thức Vay");
 
@@ -396,7 +396,14 @@ public class JFrameCaculateEmployee extends javax.swing.JFrame {
         MangTienGocConLai.clear();
         MangTienLai.clear();
         MangTong.clear();
-        long soTienVay = Long.parseLong(lbSoTienVay.getText());
+        long soTienVay = 0;
+        if(lbSoTienVay.getText() == "") {
+            lbTrangThai.setText("Chua co thong tin vay");
+            soTienVay = 0;
+        } else {
+            soTienVay = Long.parseLong(lbSoTienVay.getText());
+        }
+        
         int thoiGianVay = Integer.parseInt(lbThoiGianVay.getText());
         float laiXuat = Float.parseFloat(txtLaiXuatKiDauTien.getText());
 
